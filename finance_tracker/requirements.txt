@@ -1,0 +1,19 @@
+# Personal Finance Tracker - Python Dependencies
+
+# Database connectivity
+mysql-connector-python>=8.0.33
+
+# Data visualization and analysis
+matplotlib>=3.7.0
+pandas>=2.0.0
+
+# GUI framework (built-in with Python)
+# tkinter - included with Python standard library
+
+# Optional: Enhanced GUI styling
+# ttkthemes>=3.2.2  # Uncomment for additional themes
+
+# Development dependencies (optional)
+# pytest>=7.0.0
+# black>=23.0.0
+# flake8>=6.0.0
