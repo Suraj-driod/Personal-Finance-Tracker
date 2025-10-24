@@ -26,7 +26,6 @@ import os
 
 # Add the current directory to Python path for imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 from ui.login_page import LoginWindow
 from db.connection import db
 

@@ -9,15 +9,19 @@ class LoginWindow:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Personal Finance Tracker - Login")
-        self.root.geometry("400x300")
-        self.root.resizable(False, False)
+        self.root.geometry("800x700")
+        self.root.resizable(True, True)
         
         # Center the window
         self.center_window()
         
+        # Configure root window grid weights
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
+        
         # Create main frame
         self.main_frame = ttk.Frame(self.root, padding="20")
-        self.main_frame.pack(fill=tk.BOTH, expand=True)
+        self.main_frame.grid(row=0, column=0, sticky='nsew')
         
         # Create UI elements
         self.create_widgets()
@@ -36,51 +40,61 @@ class LoginWindow:
     
     def create_widgets(self):
         """Create login form widgets"""
+        # Configure main frame grid weights
+        self.main_frame.grid_rowconfigure(1, weight=1)
+        self.main_frame.grid_columnconfigure(0, weight=1)
+        
         # Title
         title_label = ttk.Label(self.main_frame, text="Personal Finance Tracker", 
                                font=('Arial', 16, 'bold'))
-        title_label.pack(pady=(0, 20))
+        title_label.grid(row=0, column=0, pady=(0, 20))
         
         # Login frame
         login_frame = ttk.LabelFrame(self.main_frame, text="Login", padding="10")
-        login_frame.pack(fill=tk.X, pady=(0, 10))
+        login_frame.grid(row=1, column=0, sticky='nsew', pady=(0, 10))
+        
+        # Configure login frame grid weights
+        login_frame.grid_columnconfigure(1, weight=1)
         
         # Username
         ttk.Label(login_frame, text="Username:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        self.username_entry = ttk.Entry(login_frame, width=25)
-        self.username_entry.grid(row=0, column=1, pady=5, padx=(10, 0))
+        self.username_entry = ttk.Entry(login_frame, width=30)
+        self.username_entry.grid(row=0, column=1, pady=5, padx=(5, 0))
         
         # Password
         ttk.Label(login_frame, text="Password:").grid(row=1, column=0, sticky=tk.W, pady=5)
-        self.password_entry = ttk.Entry(login_frame, width=25, show="*")
-        self.password_entry.grid(row=1, column=1, pady=5, padx=(10, 0))
+        self.password_entry = ttk.Entry(login_frame, width=30, show="*")
+        self.password_entry.grid(row=1, column=1, pady=5, padx=(5, 0))
         
         # Login button
         login_btn = ttk.Button(login_frame, text="Login", command=self.login)
-        login_btn.grid(row=2, column=1, pady=10, sticky=tk.E)
+        login_btn.grid(row=2, column=1, pady=10, sticky='e')
         
         # Register frame
         register_frame = ttk.LabelFrame(self.main_frame, text="Register", padding="10")
-        register_frame.pack(fill=tk.X, pady=(0, 10))
+        register_frame.grid(row=2, column=0, sticky='nsew', pady=(0, 10))
+        
+        # Configure register frame grid weights
+        register_frame.grid_columnconfigure(1, weight=1)
         
         # Register username
         ttk.Label(register_frame, text="Username:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        self.reg_username_entry = ttk.Entry(register_frame, width=25)
-        self.reg_username_entry.grid(row=0, column=1, pady=5, padx=(10, 0))
+        self.reg_username_entry = ttk.Entry(register_frame, width=30)
+        self.reg_username_entry.grid(row=0, column=1, pady=5, padx=(5, 0))
         
         # Register password
         ttk.Label(register_frame, text="Password:").grid(row=1, column=0, sticky=tk.W, pady=5)
-        self.reg_password_entry = ttk.Entry(register_frame, width=25, show="*")
-        self.reg_password_entry.grid(row=1, column=1, pady=5, padx=(10, 0))
+        self.reg_password_entry = ttk.Entry(register_frame, width=30, show="*")
+        self.reg_password_entry.grid(row=1, column=1, pady=5, padx=(5, 0))
         
         # Confirm password
         ttk.Label(register_frame, text="Confirm:").grid(row=2, column=0, sticky=tk.W, pady=5)
-        self.reg_confirm_entry = ttk.Entry(register_frame, width=25, show="*")
-        self.reg_confirm_entry.grid(row=2, column=1, pady=5, padx=(10, 0))
+        self.reg_confirm_entry = ttk.Entry(register_frame, width=30, show="*")
+        self.reg_confirm_entry.grid(row=2, column=1, pady=5, padx=(5, 0))
         
         # Register button
         register_btn = ttk.Button(register_frame, text="Register", command=self.register)
-        register_btn.grid(row=3, column=1, pady=10, sticky=tk.E)
+        register_btn.grid(row=3, column=1, pady=10, sticky='e')
         
         # Bind Enter key to login
         self.root.bind('<Return>', lambda e: self.login())
